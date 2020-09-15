@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Marquee Mark</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  </head>
+
+  <body>
+    <img src="./sk8rboy.jpg">
+    <img class="animated infinite wobble" src="mark.jpg" style="position:absolute; height: 70px; left:250px; top:25px;">
+
+    <marquee style="position: absolute; left: 0; top: 0; width:600px; height: 338px;" behavior="alternate" direction="down">
+      <marquee behavior="alternate">
+        <h1 id="saying" style="color: yellow; text-shadow: 2px 2px gray;">Just be yourself</h1>
+      </marquee>
+    </marquee>
+
+    <audio controls="" autoplay="true" style="display:block;">
+      <source src="skaterboi.mp3" type="audio/mpeg">
+    </audio>
+
+    <h1 style="color: blue; text-shadow:2px 2px pink;">Marquee Mark Approved</h1>
+
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+      <h1 style="color: pink; text-shadow:2px 2px blue;">View a random youtube video</h1>
+    </a>
+
+    <script>
+      var sayings = [
+        "Just be yourself",
+        "Vince Papale was offsides",
+        "I'm a peacock, you gotta let me fly",
+        "Do you remember the alamo?",
+      ];
+
+      function updateSaying(text) {
+        var newSaying = sayings[Math.floor(Math.random()*sayings.length)]
+        document.getElementById("saying").innerHTML = newSaying;
+      }
+
+      setInterval(updateSaying, 8000);
+    </script>
+  </body>
+</html>
