@@ -29,6 +29,8 @@ module "cloudfront-s3-cdn" {
   website_enabled = true
   index_document  = "index.html"
   error_document  = "index.html"
+
+  depends_on = [module.acm_request_certificate]
 }
 
 /** Request an SSL certificate */
