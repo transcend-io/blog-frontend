@@ -20,6 +20,7 @@ jobs:
       with:
         terraform_version: 0.13.2
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+        terraform_wrapper: false
 
     # Ensure you have AWS credentials set up. Your config will likely differ here
     - name: Configure AWS Credentials
@@ -34,7 +35,7 @@ jobs:
 
     # Apply the terraform code
     - run: terraform init
-    - run: terraform validate -no-color
+    - run: terraform validate
     - run: terraform plan -out planfile
     - run: terraform apply planfile
 
