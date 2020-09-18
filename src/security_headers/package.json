@@ -1,0 +1,7 @@
+{
+  "author": "Transcend Inc.",
+  "name": "@main/version",
+  "license": "UNLICENSED",
+  "main": "index.js",
+  "dependencies": {}
+}
