@@ -1,6 +1,6 @@
 {
   "author": "Transcend Inc.",
-  "name": "@main/version",
+  "name": "@main/security_headers",
   "license": "UNLICENSED",
   "main": "index.js",
   "dependencies": {}
