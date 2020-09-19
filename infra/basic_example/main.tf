@@ -49,7 +49,7 @@ data "aws_route53_zone" "zone" {
 /** Use remote state through terraform cloud */
 terraform {
   backend "remote" {
-    hostname = "app.terraform.io"
+    hostname     = "app.terraform.io"
     organization = "transcend-io"
 
     workspaces {

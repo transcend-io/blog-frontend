@@ -1,0 +1,44 @@
+name: Update Infrastructure and deploy application code
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infra/basic_example
+    steps:
+    # Checkout this repo
+    - uses: actions/checkout@master
+
+    # Download a specific terraform version you'd like to use
+    - uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 0.13.2
+        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+        terraform_wrapper: false
+
+    # Ensure you have AWS credentials set up. Your config will likely differ here
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+        role-skip-session-tagging: true
+        role-duration-seconds: 1200
+        aws-region: us-east-1
+
+    # Apply the terraform code
+    - run: terraform init
+    - run: terraform validate
+    - run: terraform plan -out planfile
+    - run: terraform apply planfile
+
+    # Upload our website code to our origin S3 bucket
+    - name: Deploy static site to S3 bucket
+      run: aws s3 sync ../../public s3://$(terraform output s3_bucket) --delete
