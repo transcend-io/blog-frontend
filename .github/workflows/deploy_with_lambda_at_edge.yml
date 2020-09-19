@@ -39,12 +39,12 @@ jobs:
         node-version: '12'
     - run: yarn
       working-directory: src/security_headers
+    - run: yarn build
+      working-directory: src/security_headers
 
     # Apply the terraform code
     - run: terraform init
     - run: terraform validate
-    - run: terraform plan -target module.domain -out planfile
-    - run: terraform apply planfile
     - run: terraform plan -out planfile
     - run: terraform apply planfile
 
