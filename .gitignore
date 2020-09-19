@@ -3,3 +3,4 @@ planfile
 lambda_code.zip
 .DS_Store
 node_modules
+dist/

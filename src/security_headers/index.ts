@@ -1,7 +1,9 @@
+import { CloudFrontResponseEvent, CloudFrontResponseHandler, Context, CloudFrontResponseCallback } from 'aws-lambda'
+
 /**
  * Adds security headers to a response.
  */
-exports.handler = (event, context, callback) => {
+export const handler: CloudFrontResponseHandler = (event: CloudFrontResponseEvent, _: Context, callback: CloudFrontResponseCallback): void => {
   // Get contents of response
   const response = event.Records[0].cf.response;
   const headers = response.headers;
