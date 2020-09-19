@@ -19,6 +19,7 @@ module "security_header_lambda" {
   version                = "0.0.2"
   name                   = "security_headers"
   description            = "Adds security headers to the response"
+  runtime                = "nodejs12.x"
   lambda_code_source_dir = "${path.module}/../../src/security_headers"
 }
 
