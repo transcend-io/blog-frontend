@@ -43,6 +43,8 @@ jobs:
     # Apply the terraform code
     - run: terraform init
     - run: terraform validate
+    - run: terraform plan -target module.domain -out planfile
+    - run: terraform apply planfile
     - run: terraform plan -out planfile
     - run: terraform apply planfile
 

@@ -54,7 +54,7 @@ module "cloudfront-s3-cdn" {
     },
   ]
 
-  depends_on = [module.acm_request_certificate]
+  depends_on = [module.acm_request_certificate, module.domain]
 }
 
 /** Request an SSL certificate */
@@ -63,6 +63,8 @@ module "acm_request_certificate" {
   version                     = "0.7.0"
   domain_name                 = module.domain.zone_name
   wait_for_certificate_issued = true
+
+  depends_on = [module.domain]
 }
 
 /** Use remote state through terraform cloud */
