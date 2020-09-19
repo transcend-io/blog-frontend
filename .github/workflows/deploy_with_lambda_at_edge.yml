@@ -34,7 +34,7 @@ jobs:
         aws-region: us-east-1
 
     # Build the lambda@edge function
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v2-beta
       with:
         node-version: '10'
     - run: yarn
