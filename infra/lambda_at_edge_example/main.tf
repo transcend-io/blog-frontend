@@ -15,10 +15,10 @@ module "domain" {
 
 /** Create a Lambda@Edge function */
 module "security_header_lambda" {
-  source  = "transcend-io/lambda-at-edge/aws"
-  version = "0.0.2"
-  name = "security_headers"
-  description = "Adds security headers to the response"
+  source                 = "transcend-io/lambda-at-edge/aws"
+  version                = "0.0.2"
+  name                   = "security_headers"
+  description            = "Adds security headers to the response"
   lambda_code_source_dir = "${path.module}/../../src/security_headers"
 }
 
